@@ -2,10 +2,13 @@ import React from 'react'
 import { StyleSheet, View,Text, Pressable} from 'react-native'
 
 
-function Home() {
+function Home({navigation,route}:any) {
+    const color = route.params?.selectedColor ?? "pink"
   return (
     <View style={styles.container}>
-        <View style={styles.imgFrame}>THIS IS IPHONE 1120 </View>
+        <View style={[styles.imgFrame, { backgroundColor: color }]}>
+            <Text style={styles.imgText}>THIS IS IPHONE 1120</Text>
+        </View>
         <View style={styles.infoFrame}>
             <Text style={{fontSize:18}}>Iphone 1120 like new 99%</Text>
             <Text style={{fontSize:18}}> ⭐ ⭐ ⭐ ⭐ ⭐ (view 1220 reviews)</Text>
@@ -16,7 +19,7 @@ function Home() {
             <Text style={{fontSize:20,color:'red',fontWeight:"bold",textTransform:"uppercase"}}>Get refund if there's somewhere selling this cheaper !</Text>
 
         </View>
-        <Pressable style={styles.buttonColor}>
+        <Pressable style={styles.buttonColor}  onPress={()=>navigation.navigate("FourColor",{currentColor:color})}>
             <Text  style={{fontWeight:"bold"}}> 4 COLORS 2 CHOOSE </Text>
         </Pressable>
         <Pressable style={styles.buttonBuy}>
@@ -35,16 +38,17 @@ const styles = StyleSheet.create({
         padding:10
     },
     imgFrame:{
-        backgroundColor:"pink",
         height:350,
         width:"100%",
-        color:"white",
         alignSelf:"flex-start",
         justifyContent:"center",
         alignItems:"center",
+        marginBottom:10
+    },
+    imgText: {
+        color:"white",
         fontSize:25,
         fontWeight:"bold",
-        marginBottom:10
     },
     infoFrame:{
         height:150,
