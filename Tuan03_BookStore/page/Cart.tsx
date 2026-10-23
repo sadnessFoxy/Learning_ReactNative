@@ -88,16 +88,15 @@ export default function Cart({ navigation }: any) {
                 <View style={{ width: 40 }} />
             </View>
 
-            {/* VÙNG 1: Nội dung cuộn ở giữa (ScrollView flex: 1) */}
             <ScrollView style={styles.scrollArea} contentContainerStyle={styles.scrollContent}>
                 {cartItems.map((item) => (
                     <View key={item.id} style={styles.cartRow}>
-                        {/* Ảnh cố định */}
+
                         <View style={styles.imageBox}>
                             <Image source={item.image} style={styles.bookImage} resizeMode="contain" />
                         </View>
 
-                        {/* Tên flex: 1 */}
+
                         <View style={styles.infoBox}>
                             <Text style={styles.bookTitle} numberOfLines={2}>
                                 {item.title}
@@ -105,7 +104,7 @@ export default function Cart({ navigation }: any) {
                             <Text style={styles.bookPrice}>{item.price} đ</Text>
                         </View>
 
-                        {/* Số lượng + Giá width cố định */}
+
                         <View style={styles.quantityBox}>
                             <View style={styles.quantityControl}>
                                 <TouchableOpacity
@@ -130,7 +129,6 @@ export default function Cart({ navigation }: any) {
                 ))}
             </ScrollView>
 
-            {/* VÙNG 2: Thanh tổng tiền + nút thanh toán cố định ngay trên Tab Bar */}
             <View style={styles.checkoutBar}>
                 <View style={styles.totalInfo}>
                     <Text style={styles.totalLabel}>Tổng thanh toán:</Text>
@@ -141,7 +139,6 @@ export default function Cart({ navigation }: any) {
                 </TouchableOpacity>
             </View>
 
-            {/* VÙNG 3: Tab Bar cố định của Bài tập 1 */}
             <BottomBar activeTab="Giỏ hàng" />
         </SafeAreaView>
     );
